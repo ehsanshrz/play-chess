@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f1e9">
+    <title>Checkmate — Chess</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Checkmate home">
+          <span class="brand-mark" aria-hidden="true">♞</span>
+          <span>checkmate<span class="brand-period">.</span></span>
+        </a>
+        <button id="language" class="language-button" type="button" aria-label="Change language">فارسی</button>
+      </header>
+
+      <section class="layout" aria-label="Chess game">
+        <div class="board-column">
+          <div class="game-heading">
+            <div>
+              <p class="eyebrow" data-i18n="eyebrow">A little friendly competition</p>
+              <h1 data-i18n="title">Your move.</h1>
+            </div>
+            <span class="online-badge"><span></span><span data-i18n="localGame">Local game</span></span>
+          </div>
+
+          <div class="player-strip opponent-strip">
+            <div class="avatar bot-avatar" aria-hidden="true">✦</div>
+            <div class="player-details">
+              <strong data-i18n="opponent">Chess Bot</strong>
+              <span data-i18n="opponentCaption">Ready for a game</span>
+            </div>
+            <span id="bot-color" class="piece-color black-piece" aria-label="Black">♚</span>
+          </div>
+
+          <div class="board-frame">
+            <div id="board" class="board" role="grid" aria-label="Chess board"></div>
+          </div>
+          <div class="player-strip human-strip">
+            <div class="avatar human-avatar" aria-hidden="true">☺</div>
+            <div class="player-details">
+              <strong data-i18n="you">You</strong>
+              <span id="player-caption" data-i18n="yourTurn">Your turn</span>
+            </div>
+            <span id="human-color" class="piece-color white-piece" aria-label="White">♔</span>
+          </div>
+        </div>
+
+        <aside class="side-panel">
+          <section class="panel game-panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow" data-i18n="game">THE GAME</p>
+                <h2 data-i18n="playChess">Play chess</h2>
+              </div>
+              <span class="turn-indicator" id="turn-indicator" aria-hidden="true">♔</span>
+            </div>
+            <p id="status" class="status" aria-live="polite">Your turn — make a move.</p>
+
+            <div class="settings">
+              <label for="side" data-i18n="playAs">Play as</label>
+              <div class="select-wrap">
+                <select id="side">
+                  <option value="w" data-i18n="white">White</option>
+                  <option value="b" data-i18n="black">Black</option>
+                </select>
+                <span aria-hidden="true">⌄</span>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <button id="new-game" class="primary-button" type="button">
+                <span aria-hidden="true">↻</span><span data-i18n="newGame">New game</span>
+              </button>
+              <button id="undo" class="secondary-button" type="button" disabled>
+                <span aria-hidden="true">↶</span><span data-i18n="undo">Undo</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="panel moves-panel">
+            <div class="moves-heading">
+              <div>
+                <p class="eyebrow" data-i18n="notation">NOTATION</p>
+                <h2 data-i18n="moves">Move history</h2>
+              </div>
+              <span id="move-count" class="move-count">0</span>
+            </div>
+            <div id="moves" class="moves-list" aria-live="polite">
+              <p class="empty-moves" data-i18n="movesEmpty">Your moves will appear here.</p>
+            </div>
+          </section>
+
+          <p class="note"><span aria-hidden="true">✦</span><span data-i18n="note">A thoughtful opponent, right in your browser.</span></p>
+        </aside>
+      </section>
+      <footer><span data-i18n="footer">Take your time. The board isn't going anywhere.</span><span aria-hidden="true">♟</span></footer>
+    </main>
+
+    <div id="promotion" class="promotion-backdrop" hidden>
+      <div class="promotion-dialog" role="dialog" aria-modal="true" aria-labelledby="promotion-title">
+        <h2 id="promotion-title" data-i18n="promote">Choose a piece</h2>
+        <div id="promotion-choices" class="promotion-choices"></div>
+      </div>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>
